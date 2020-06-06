@@ -95,7 +95,7 @@
     new agGrid.Grid(eGridDiv, gridOptions);
 
     agGrid.simpleHttpRequest({
-        url: 'http://localhost/stocks_logs/index.php/Home/getTradeData'
+        url: 'http://localhost/stocks_logs/index.php/Home/filteredTradeInfo'
     }).then(function(data) {
         gridOptions.api.setRowData(data);
         // gridOptions.columnApi.autoSizeColumns(data, skipHeader);

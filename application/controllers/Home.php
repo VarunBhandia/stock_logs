@@ -31,14 +31,32 @@ class Home extends CI_Controller
         echo json_encode($data['trades']);
     }
 
-    public function filtered_trade_info()
+    public function filteredTradeInfo()
     {
         $model = $this->model;
         $data['controller'] = $this->controller;
         $trades = $this->$model->select(array(),'trade_info',array(),'');
+
+        $filtered_trade = [];
+        array_push($filtered_trade,$trades[0]);
         
-        echo json_encode($trades);
+        $i =1;
+        $j=0;
+        while($i < count($trades)){
+            
+            if($trades[$i]->name == $filtered_trade[$j]->name && $trades[$i]->category == $filtered_trade[$j]->category && $trades[$i]->trade_date == $filtered_trade[$j]->trade_date ){
+                
+                $filtered_trade[$j]->price = round((($filtered_trade[$j]->qty*$filtered_trade[$j]->price) + ($trades[$i]->qty*$trades[$i]->price)) / ($filtered_trade[$j]->qty + $trades[$i]->qty),2);
+                $filtered_trade[$j]->qty = $filtered_trade[$j]->qty + $trades[$i]->qty;
+            }
+            else{
+                $filtered_trade[$j]->id = $j;
+                array_push($filtered_trade,$trades[$i]);
+                $j++;
+            }
+            $i++;
+        }
+        echo json_encode($filtered_trade);
     }
 
 }
-?>
