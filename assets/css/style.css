@@ -10,11 +10,15 @@ body,h1,h2,h3,h4,h5,h6,label,p {color:#cacaca;
 body{
     letter-spacing: 1px;
     font-family: 'Montserrat', sans-serif;
-    background-color:#000000de;
+    background-color:#161619;
 }
 
 .bg-dark-custom{
-    background-color: black !important;
+    background-color: #414141 !important;
+}
+
+.dark-inner-content{
+    background-color: #161619 !important;
 }
 
 .sidenav {
