@@ -71,9 +71,9 @@
 
             </div>
         </nav>
-        <div class="sidenav">
+        <!-- <div class="sidenav">
             <a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
-        </div>
+        </div> -->
         <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog " role="document">
                 <div class="modal-content dark-inner-content">

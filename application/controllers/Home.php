@@ -18,27 +18,14 @@ class Home extends CI_Controller
     {
         $model = $this->model;
         $data['controller'] = $this->controller;
+        $data['trades'] = $this->$model->select(array(),'trade_info',array(),'');
         $this->load->view('Home/index',$data);
     }
 
-    public function about()
-    {
-        $model = $this->model;
-        $data['controller'] = $this->controller;
-        $this->load->view('Home/about');
-    }
-
-    public function contact()
-    {
-        $model = $this->model;
-        $data['controller'] = $this->controller;
-        $this->load->view('Home/contact');
-    }
-
-    public function insertEnquiry()
+    
+    public function getTradeData()
     {
             $model = $this->model;
-
             $username = $this->input->post('username');
             $number = $this->input->post('number');
             $email = $this->input->post('email');
