@@ -85,7 +85,7 @@ class Home extends CI_Controller
         echo '<pre>';
 
         for ($j = 0; $j < $no_of_unique_stocks; $j++) {
-            // $temp_arr = [];
+            $temp_arr = [];
 
             $total_buy_price = 0;
             $total_buy_qty = 0;
@@ -99,28 +99,45 @@ class Home extends CI_Controller
                 if ($filtered_trade[$i]->name == $unique_stocks[$j]->name) {
 
                     if ($filtered_trade[$i]->category == 'B') {
+                        array_push($temp_arr, $filtered_trade[$i]);
                         $total_buy_qty = $total_buy_qty + $filtered_trade[$i]->qty;
-                        if ($filtered_trade[$i]->qty + $current_buy_qty == 0) {
-                            $hold_price = 0;
-                        } else {
-                            $hold_price = (($hold_price * $current_buy_qty) + ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($filtered_trade[$i]->qty + $current_buy_qty);
-                        }
-                        $current_buy_qty = $current_buy_qty + $filtered_trade[$i]->qty;
+                        // if ($filtered_trade[$i]->qty + $current_buy_qty == 0) {
+                        //     $hold_price = 0;
+                        // } else {
+                        //     $hold_price = (($hold_price * $current_buy_qty) + ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($filtered_trade[$i]->qty + $current_buy_qty);
+                        // }
+                        // $current_buy_qty = $current_buy_qty + $filtered_trade[$i]->qty;
                         $total_buy_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_buy_price;
                     } else {
                         $total_sell_qty = $total_sell_qty + $filtered_trade[$i]->qty;
-                        if ($filtered_trade[$i]->qty - $current_buy_qty != 0) {
-                            $hold_price = (($hold_price * $current_buy_qty) - ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($current_buy_qty - $filtered_trade[$i]->qty);
-                        } else {
-                            $hold_price = 0;
-                        }
+                        // if ($filtered_trade[$i]->qty - $current_buy_qty != 0) {
+                        //     $hold_price = (($hold_price * $current_buy_qty) - ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($current_buy_qty - $filtered_trade[$i]->qty);
+                        // } else {
+                        //     $hold_price = 0;
+                        // }
                         $current_buy_qty = $current_buy_qty - $filtered_trade[$i]->qty;
 
                         $total_sell_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_sell_price;
                     }
-                    if ($filtered_trade[$i]->name == 'SBI CARDS AND PAYMENT SERVICES') {
-                        echo $hold_price.'  '.$current_buy_qty;
-                        echo '<br />';
+                    // if ($filtered_trade[$i]->name == 'SBI CARDS AND PAYMENT SERVICES') {
+                    //     echo $hold_price.'  '.$current_buy_qty;
+                    //     echo '<br />';
+                    // }
+                }
+            }
+            $current_buy_qty = $total_buy_qty - $total_sell_qty;
+            $current_hold_qty = $current_buy_qty;
+            if ($total_buy_qty == $total_sell_qty) {
+                $hold_price = 0;
+            } else {
+                $current_hold_qty = $current_hold_qty - $temp_arr[count($temp_arr) - 1]->qty;
+                $hold_price = $temp_arr[count($temp_arr) - 1]->price;
+                for ($k = count($temp_arr) - 2; $k >= 0; $k--) {
+                    if ($current_hold_qty == 0) {
+                        break;
+                    } else {
+                        $hold_price = (($temp_arr[$k]->price * $temp_arr[$k]->qty) + ($current_hold_qty * $hold_price)) / ($temp_arr[$k]->qty + $current_hold_qty);
+                        $current_hold_qty = $current_hold_qty - $temp_arr[$k]->qty;
                     }
                 }
             }
@@ -140,7 +157,7 @@ class Home extends CI_Controller
             echo '<br />';
             echo '<br />';
 
-            // $stocks_map[$j] = $temp_arr;
+            $stocks_map[$j] = $temp_arr;
         }
         echo '</pre>';
 
