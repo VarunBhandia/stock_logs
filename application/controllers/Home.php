@@ -20,6 +20,7 @@ class Home extends CI_Controller
         $data['controller'] = $this->controller;
         $data['trades'] = $this->$model->select(array(), 'trade_info', array(), '');
         $data['unique_stocks'] = $this->getStocksName();
+        $data['stocks_map'] = $this->perStockInfo();
         $this->load->view('Home/index', $data);
     }
 
@@ -62,6 +63,35 @@ class Home extends CI_Controller
         return $filtered_trade;
     }
 
+    public function filteredTradeInfoInArray()
+    {
+        $model = $this->model;
+        $data['controller'] = $this->controller;
+        $trades = $this->$model->select(array(), 'trade_info', array(), '');
+
+        $filtered_trade = [];
+        array_push($filtered_trade, $trades[0]);
+
+        $i = 1;
+        $j = 0;
+        while ($i < count($trades)) {
+
+            if ($trades[$i]->name == $filtered_trade[$j]->name && $trades[$i]->category == $filtered_trade[$j]->category && $trades[$i]->trade_date == $filtered_trade[$j]->trade_date) {
+
+                $filtered_trade[$j]->price = round((($filtered_trade[$j]->qty * $filtered_trade[$j]->price) + ($trades[$i]->qty * $trades[$i]->price)) / ($filtered_trade[$j]->qty + $trades[$i]->qty), 2);
+                $filtered_trade[$j]->qty = $filtered_trade[$j]->qty + $trades[$i]->qty;
+            } else {
+
+                array_push($filtered_trade, $trades[$i]);
+                $j++;
+                $filtered_trade[$j]->id = $j + 1;
+            }
+            $i++;
+        }
+        return $filtered_trade;
+    }
+
+
     public function getStocksName()
     {
         $model = $this->model;
@@ -77,12 +107,12 @@ class Home extends CI_Controller
         $model = $this->model;
         $data['controller'] = $this->controller;
         $unique_stocks = $this->getStocksName();
-        $filtered_trade = $this->filteredTradeInfo();
+        $filtered_trade = $this->filteredTradeInfoInArray();
         $no_of_filtered_trade = count($filtered_trade);
         $no_of_unique_stocks = count($unique_stocks);
 
         $stocks_map = array();
-        echo '<pre>';
+        // echo '<pre>';
 
         for ($j = 0; $j < $no_of_unique_stocks; $j++) {
             $temp_arr = [];
@@ -101,28 +131,12 @@ class Home extends CI_Controller
                     if ($filtered_trade[$i]->category == 'B') {
                         array_push($temp_arr, $filtered_trade[$i]);
                         $total_buy_qty = $total_buy_qty + $filtered_trade[$i]->qty;
-                        // if ($filtered_trade[$i]->qty + $current_buy_qty == 0) {
-                        //     $hold_price = 0;
-                        // } else {
-                        //     $hold_price = (($hold_price * $current_buy_qty) + ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($filtered_trade[$i]->qty + $current_buy_qty);
-                        // }
-                        // $current_buy_qty = $current_buy_qty + $filtered_trade[$i]->qty;
                         $total_buy_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_buy_price;
                     } else {
                         $total_sell_qty = $total_sell_qty + $filtered_trade[$i]->qty;
-                        // if ($filtered_trade[$i]->qty - $current_buy_qty != 0) {
-                        //     $hold_price = (($hold_price * $current_buy_qty) - ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($current_buy_qty - $filtered_trade[$i]->qty);
-                        // } else {
-                        //     $hold_price = 0;
-                        // }
                         $current_buy_qty = $current_buy_qty - $filtered_trade[$i]->qty;
-
                         $total_sell_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_sell_price;
                     }
-                    // if ($filtered_trade[$i]->name == 'SBI CARDS AND PAYMENT SERVICES') {
-                    //     echo $hold_price.'  '.$current_buy_qty;
-                    //     echo '<br />';
-                    // }
                 }
             }
             $current_buy_qty = $total_buy_qty - $total_sell_qty;
@@ -141,25 +155,33 @@ class Home extends CI_Controller
                     }
                 }
             }
-            print_r($unique_stocks[$j]->name);
-            echo '<br />';
-            print_r("Buy Qty = " . $total_buy_qty);
-            echo '<br />';
-            print_r("Sell Qty = " . $total_sell_qty);
-            echo '<br />';
-            print_r("Buy price = " . $total_buy_price);
-            echo '<br />';
-            print_r("Sell Price = " . $total_sell_price);
-            echo '<br />';
-            print_r("Current Holding Qty = " . $current_buy_qty);
-            echo '<br />';
-            print_r("Current Holding Price = " . $hold_price);
-            echo '<br />';
-            echo '<br />';
 
-            $stocks_map[$j] = $temp_arr;
+            $per_stock_info["name"] = $unique_stocks[$j]->name;
+            $per_stock_info["total_buy_qty"] = $total_buy_qty;
+            $per_stock_info["total_sell_qty"] = $total_sell_qty;
+            $per_stock_info["total_buy_price"] = $total_buy_price;
+            $per_stock_info["total_sell_price"] = $total_sell_price;
+            $per_stock_info["current_buy_qty"] = $current_buy_qty;
+            $per_stock_info["hold_price"] = $hold_price;
+            array_push($stocks_map,$per_stock_info);
+
+            // print_r($unique_stocks[$j]->name);
+            // echo '<br />';
+            // print_r("Buy Qty = " . $total_buy_qty);
+            // echo '<br />';
+            // print_r("Sell Qty = " . $total_sell_qty);
+            // echo '<br />';
+            // print_r("Buy price = " . $total_buy_price);
+            // echo '<br />';
+            // print_r("Sell Price = " . $total_sell_price);
+            // echo '<br />';
+            // print_r("Current Holding Qty = " . $current_buy_qty);
+            // echo '<br />';
+            // print_r("Current Holding Price = " . $hold_price);
+            // echo '<br />';
+            // echo '<br />';
         }
-        echo '</pre>';
+        // echo '</pre>';
 
 
         return $stocks_map;

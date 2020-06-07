@@ -2,23 +2,42 @@
 ?>
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <div class="card-container">
             <h4 class="card-title"> <b>List of Stocks</b> </h4>
             <div class="card-desc">
                 <ol>
                     <?php
                     foreach ($unique_stocks as $unique_stock) {
-                        ?>
+                    ?>
                         <li><?php echo $unique_stock->name ?></li>
-                        <?php
+                    <?php
                     }
                     ?>
                 </ol>
             </div>
         </div>
+        <div class="row">
+            <?php
+            foreach ($stocks_map as $per_stock_info) {
+            ?>
+                <div class="col-md-6">
+                    <div class="card-container">
+                        <h6 class="card-title"> <b><?php echo $per_stock_info["name"] ?></b> </h6x>
+                            <div class="card-desc">
+
+                            </div>
+                    </div>
+                </div>
+
+            <?php
+            }
+            ?>
+        </div>
+
+
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
 
         <div class="table-container">
             <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
