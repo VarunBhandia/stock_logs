@@ -85,50 +85,62 @@ class Home extends CI_Controller
         echo '<pre>';
 
         for ($j = 0; $j < $no_of_unique_stocks; $j++) {
-            $temp_arr = [];
+            // $temp_arr = [];
 
             $total_buy_price = 0;
             $total_buy_qty = 0;
-            $current_buy_price = 0;
             $current_buy_qty = 0;
 
             $total_sell_price = 0;
-            $current_sell_price = 0;
             $total_sell_qty = 0;
-            $current_sell_qty = 0;
-            
-            $current_hold_qty = 0;
+
             $hold_price = 0;
             for ($i = 0; $i < $no_of_filtered_trade; $i++) {
                 if ($filtered_trade[$i]->name == $unique_stocks[$j]->name) {
-                    array_push($temp_arr, $filtered_trade[$i]);
+
                     if ($filtered_trade[$i]->category == 'B') {
                         $total_buy_qty = $total_buy_qty + $filtered_trade[$i]->qty;
+                        if ($filtered_trade[$i]->qty + $current_buy_qty == 0) {
+                            $hold_price = 0;
+                        } else {
+                            $hold_price = (($hold_price * $current_buy_qty) + ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($filtered_trade[$i]->qty + $current_buy_qty);
+                        }
                         $current_buy_qty = $current_buy_qty + $filtered_trade[$i]->qty;
-
-                        $total_buy_price = ($filtered_trade[$i]->qty*$filtered_trade[$i]->price) + $total_buy_price;
+                        $total_buy_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_buy_price;
                     } else {
                         $total_sell_qty = $total_sell_qty + $filtered_trade[$i]->qty;
+                        if ($filtered_trade[$i]->qty - $current_buy_qty != 0) {
+                            $hold_price = (($hold_price * $current_buy_qty) - ($filtered_trade[$i]->qty * $filtered_trade[$i]->price)) / ($current_buy_qty - $filtered_trade[$i]->qty);
+                        } else {
+                            $hold_price = 0;
+                        }
                         $current_buy_qty = $current_buy_qty - $filtered_trade[$i]->qty;
-                        $total_sell_price = ($filtered_trade[$i]->qty*$filtered_trade[$i]->price) + $total_sell_price;
+
+                        $total_sell_price = ($filtered_trade[$i]->qty * $filtered_trade[$i]->price) + $total_sell_price;
+                    }
+                    if ($filtered_trade[$i]->name == 'SBI CARDS AND PAYMENT SERVICES') {
+                        echo $hold_price.'  '.$current_buy_qty;
+                        echo '<br />';
                     }
                 }
             }
             print_r($unique_stocks[$j]->name);
             echo '<br />';
-            print_r("Buy Qty = ".$total_buy_qty);
+            print_r("Buy Qty = " . $total_buy_qty);
             echo '<br />';
-            print_r("Sell Qty = ".$total_sell_qty);
+            print_r("Sell Qty = " . $total_sell_qty);
             echo '<br />';
-            print_r("Buy price = ".$total_buy_price);
+            print_r("Buy price = " . $total_buy_price);
             echo '<br />';
-            print_r("Sell Price = ".$total_sell_price);
+            print_r("Sell Price = " . $total_sell_price);
             echo '<br />';
-            print_r("Current Holding Qty = ".$current_buy_qty);
+            print_r("Current Holding Qty = " . $current_buy_qty);
+            echo '<br />';
+            print_r("Current Holding Price = " . $hold_price);
             echo '<br />';
             echo '<br />';
 
-            $stocks_map[$j] = $temp_arr;
+            // $stocks_map[$j] = $temp_arr;
         }
         echo '</pre>';
 
