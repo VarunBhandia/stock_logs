@@ -19,7 +19,9 @@
         </div>
         <div class="row">
             <?php
+            $total_profit =0;
             foreach ($stocks_map as $per_stock_info) {
+                $total_profit = $total_profit + $per_stock_info["profit"];
             ?>
                 <div class="col-md-6">
                     <div class="stock-container">
@@ -31,7 +33,6 @@
                                 <p class="stock-card-desc"><b>Total Selling Price :</b> <?php echo $per_stock_info["total_sell_price"] ?></p>
                                 <p class="stock-card-desc"><b>Holding Qty :</b> <?php echo $per_stock_info["current_buy_qty"] ?></p>
                                 <p class="stock-card-desc"><b>Holding Price :</b> <?php echo $per_stock_info["hold_price"] ?></p>
-                                <!-- <hr> -->
                                 <p class="stock-card-desc"><b>Profit :</b> <?php echo $per_stock_info["profit"] ?></p>
                             </div>
                     </div>
@@ -39,6 +40,7 @@
 
             <?php
             }
+            echo $total_profit;
             ?>
         </div>
 
