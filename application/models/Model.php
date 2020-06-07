@@ -11,11 +11,11 @@ class Model extends CI_Model {
 		return $this->db->select($fields)->where($condition)->order_by($orderField,$orderType)->limit($limit)->get($table)->result();
 	}
 
-//	public function select_distinct($fields,$table,$condition,$orderField,$orderType='desc',$limit=null)
-//	{
-//		return $this->db->distinct()->$this->db->select($fields)->where($condition)->order_by($orderField,$orderType)->limit($limit)->get($table)->result();
-//	}
-//
+	public function select_distinct($fields,$table,$condition,$orderField,$orderType='desc',$limit=null)
+	{
+		return $this->db->distinct()->$this->db->select($fields)->where($condition)->order_by($orderField,$orderType)->limit($limit)->get($table)->result();
+	}
+
 
 	public function insert($collection,$table)
 	{
@@ -159,94 +159,6 @@ class Model extends CI_Model {
 		return $res;
 	}
 
-function get_vendor($vid){
-		$this->db->where("vid", $vid);
-		$query = $this->db->get("vendordetails");
-		return $result = $query->result();
 
-}	
-
-
-function get_site($sid){
-		$this->db->where("sid", $sid);
-		$query = $this->db->get("sitedetails");
-		return $result = $query->result();
-
-}
-
-function get_subcontdetails($subid){
-		$this->db->where("subid", $subid);
-		$query = $this->db->get("subcontdetails");
-		return $result = $query->result();
-
-}
-
-
-
-function get_discount($dtid){
-		$this->db->where("dtid", $dtid);
-		$query = $this->db->get("discount_type");
-		return $result = $query->result();
-
-}
-
-function get_office_details($oid){
-		$this->db->where("oid", $oid);
-		$query = $this->db->get("officedetails");
-		return $result = $query->result();
-
-}
-function get_munits($muid){
-	$muid = explode(",",$muid);
-	$this->db->where_in("muid", $muid );
-	$query = $this->db->get("munits");
-	return $result = $query->result();
-
-}
-
-function get_workitems($wiid){
-	$wiid = explode(",",$wiid);
-	$this->db->where_in("wiid", $wiid );
-	$query = $this->db->get("workitems");
-	return $result = $query->result();
-
-}
-
-	public function get_data_for_pdf($woid , $table)
-	{
-		    $this->db->where("woid", $woid);
-
-        	$query = $this->db->get($table);
-			$result = $query->result();
-	
-			$site = $this->get_site($result[0]->sid);
-			$subcontdetails = $this->get_subcontdetails($result[0]->subid);
-    		$munits = $this->get_munits($result[0]->muid);
-			$dtid = $this->get_discount($result[0]->dtid);
-			$office_details = $this->get_office_details($result[0]->oid);
-			$workitems = $this->get_workitems($result[0]->wiid);
-
-			$Wo_details['site'] = $site;			
-			$Wo_details['subcontdetails'] = $subcontdetails;			
-			$Wo_details['munits'] = $munits;
-			$Wo_details['dtid'] = $dtid;
-			$Wo_details['oid'] = $office_details;
-			$Wo_details['workitems'] = $workitems;
-			$Wo_details['All'] = $result;
-//echo "<pre>";			
-//print_r($Wo_details);
-	
-			return $Wo_details;
-
-		
-		
-
-	}
-	
-
-	
-
-	
-	
 }
 ?>
