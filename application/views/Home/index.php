@@ -22,10 +22,17 @@
             foreach ($stocks_map as $per_stock_info) {
             ?>
                 <div class="col-md-6">
-                    <div class="card-container">
-                        <h6 class="card-title"> <b><?php echo $per_stock_info["name"] ?></b> </h6x>
-                            <div class="card-desc">
-
+                    <div class="stock-container">
+                        <h5 class="stock-card-title"> <b><?php echo $per_stock_info["name"] ?></b> </h5>
+                            <div class="stock-card-desc">
+                                <p class="stock-card-desc"><b>Total Buying Qty :</b> <?php echo $per_stock_info["total_buy_qty"] ?></p>
+                                <p class="stock-card-desc"><b>Total Selling Qty :</b> <?php echo $per_stock_info["total_sell_qty"] ?></p>
+                                <p class="stock-card-desc"><b>Total Buying Price :</b> <?php echo $per_stock_info["total_buy_price"] ?></p>
+                                <p class="stock-card-desc"><b>Total Selling Price :</b> <?php echo $per_stock_info["total_sell_price"] ?></p>
+                                <p class="stock-card-desc"><b>Holding Qty :</b> <?php echo $per_stock_info["current_buy_qty"] ?></p>
+                                <p class="stock-card-desc"><b>Holding Price :</b> <?php echo $per_stock_info["hold_price"] ?></p>
+                                <!-- <hr> -->
+                                <p class="stock-card-desc"><b>Profit :</b> <?php echo $per_stock_info["profit"] ?></p>
                             </div>
                     </div>
                 </div>

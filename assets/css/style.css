@@ -41,11 +41,25 @@ body {
 }
 
 .card-container {
+    margin: 15px;
     padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: #007bff;
     height: auto;
     background-color: #0093fa26;
     margin-top: 30px;
+    border-radius: 7px;
+}
+
+.stock-container {
+    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #007bff;
+    height: 350px;
+    background-color: #fab80026;
+    margin-top: 20px;
     border-radius: 7px;
 }
 
@@ -55,7 +69,23 @@ div {
 
 .card-title {
     color: #007bff;
-    /* padding: 10px; */
+    padding: 10px;
+}
+
+.stock-card-title {
+    height: 80px;
+    color: #ffa900;
+}
+
+.stock-card-desc {
+    color: #fbaa30;
+    font-size: 13px;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    border-top: 3px solid #fbaa30;
 }
 
 .ag-pivot-off .ag-header-cell-label {
