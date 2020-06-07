@@ -2,9 +2,16 @@
 ?>
 <div class="row">
 
-    <div class="col-md-5"></div>
+    <div class="col-md-5">
+        <div class="card-container">
+            <h2 class="card-title">List of Shares</h2>
+            <div class="card-desc">
+                Balaji
+            </div>
+        </div>
+    </div>
     <div class="col-md-7">
-        
+
         <div class="table-container">
             <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
 
@@ -81,14 +88,14 @@
         if (params.data.id % 2 === 0) {
             return {
                 'font-size': '13px',
-                'background-color': '#393939',
-                'color': 'white',
+                'background-color': 'rgb(27, 28, 43)',
+                'color': '#c5c9cd',
             }
         }
         return {
             'font-size': '13px',
-            'background-color': 'rgb(74, 73, 73)',
-            'color': 'white',
+            'background-color': 'rgb(33, 34, 48)',
+            'color': '#c5c9cd',
         }
     }
     gridOptions.rowHeight = 35;

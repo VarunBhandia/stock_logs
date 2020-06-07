@@ -1,606 +1,67 @@
-html{
+@font-face {
+    font-family: archia;
+    src: url(../fonts/archia-medium-webfont.woff2);
+}
+
+html {
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'archia', sans-serif;
 }
 
-body,h1,h2,h3,h4,h5,h6,label,p {color:#cacaca; 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+p {
+    color: #cacaca;
     letter-spacing: 1px;
-       font-family: 'Montserrat', sans-serif;}
+    font-family: 'archia', sans-serif;
+}
 
-body{
+body {
     letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
-    background-color:#161619;
+    font-family: archia;
+    background-color: #161625!important;
 }
 
-.bg-dark-custom{
-    background-color: #414141 !important;
+.bg-dark-custom {
+    background-color: #1e1e30;
 }
 
-.dark-inner-content{
-    background-color: #161619 !important;
+.dark-inner-content {
+    background-color: #bdbdbd !important;
 }
 
-.searchBar{
-    padding-top: 5%;
-}
-.table-container{
+.table-container {
     margin-top: 30px;
-    /* background-color: #414141; */
 }
-.banner {
-    width: 100%;
+
+.card-container {
+    color: #0093fa;
+    height: 157px;
+    background-color: #0093fa26;
+    margin-top: 30px;
+    border-radius: 7px;
 }
+
+div {
+    font-family: archia;
+}
+
+.card-title {
+    color: #0093fa;
+    padding: 10px;
+}
+
 .ag-pivot-off .ag-header-cell-label {
     color: white;
-    background-color: black;
-}
-.ag-cell-label-container {
-    /* Necessary to allow for text to grow vertically */
-    background-color: black;
+    background-color: #1e1e30;
 }
 
-.ag-header-row{
-background-color: black !important;
-}
-.ag-theme-alpine .ag-row{
-    
-}
-
-.ag-theme-alpine .ag-root-wrapper{
-    border-color: #000000;
-    border-radius: 13px;
-}
-.banner-container{
+.banner-container {
     background-color: #eff2f7;
-}
-
-.main-heading{
-    margin-top: 3em;
-    color: #4d357c;
-    font-size: 40px;
-    font-weight: 600;
-}
-
-.main-sub-heading{
-    color: #727070;
-    font-size: 21px;
-}
-
-.footer {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    background-color: #343a40 !important;
-    color: white;
-}
-
-/* Footer */
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-#footer {
-    background-color: #343a40 !important;
-}
-#footer h5{
-    padding-left: 10px;
-    border-left: 3px solid #eeeeee;
-    padding-bottom: 6px;
-    margin-bottom: 20px;
-    color:#ffffff;
-}
-#footer a {
-    color: #ffffff;
-    text-decoration: none !important;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-}
-#footer ul.social li{
-    padding: 3px 0;
-}
-#footer ul.social li a i {
-    margin-right: 5px;
-    font-size:25px;
-    -webkit-transition: .5s all ease;
-    -moz-transition: .5s all ease;
-    transition: .5s all ease;
-}
-#footer ul.social li:hover a i {
-    font-size:30px;
-    margin-top:-10px;
-}
-#footer ul.social li a,
-#footer ul.quick-links li a{
-    color:#ffffff;
-}
-#footer ul.social li a:hover{
-    color:#eeeeee;
-}
-#footer ul.quick-links li{
-    padding: 3px 0;
-    -webkit-transition: .5s all ease;
-    -moz-transition: .5s all ease;
-    transition: .5s all ease;
-}
-#footer ul.quick-links li:hover{
-    padding: 3px 0;
-    margin-left:5px;
-    font-weight:700;
-}
-#footer ul.quick-links li a i{
-    margin-right: 5px;
-}
-#footer ul.quick-links li:hover a i {
-    font-weight: 700;
-}
-
-@media (max-width:767px){
-    #footer h5 {
-        padding-left: 0;
-        border-left: transparent;
-        padding-bottom: 0px;
-        margin-bottom: 10px;
-    }
-}
-
-.user-row {
-    margin-bottom: 14px;
-}
-
-.user-row:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
-}
-
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
-.table-user-information > tbody > tr:first-child {
-    border-top: 0;
-}
-
-
-.table-user-information > tbody > tr > td {
-    border-top: 0;
-}
-.toppad
-{margin-top:20px;
-}
-
-.counter-value{
-    color: gray;
-    font-size: 60px;
-    padding-top: 70px;
-}
-
-.counter-value-text{
-    color:#cacaca;
-    font-size: 20px;
-    padding-bottom: 70px;
-
-}
-
-.padding{
-    padding-top: 50px;
-    padding-bottom: 50px;   
-}
-
-.gray{
-    background-color: #efefef;
-}
-
-.blue{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
-    background-color: #3bb0e2;
-}
-
-.sixStep{
-    font-size: 45px;
-    color: #f1efef;
-    padding: 50px;
-}
-.connTo{
-    padding: 10px;
-    background-color: #1c93e2;
-    color: white;
-    font-size: 30px;
-    font-weight: 700;
-}
-.processImage{
-    width: 80%;
-}
-
-input[type=checkbox] {
-    border: 0px;
-    width: 20px;
-    height: 20px;
-}
-
-h1{
-    font-size: 65px;
-    font-weight: 900;
-}
-
-.hover{
-    margin: 5px;
-    box-shadow: 0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-    height: 400px;
-}
-
-.hover:hover{
-    transition: .2s;
-    box-shadow:6px 5px 20px 7px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-
-}
-
-.hover2{
-    box-shadow:0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-    height: 350px;
-}
-
-.hover2:hover{
-    transition: .2s;
-    box-shadow:6px 5px 20px 7px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-}
-
-.startupCard{
-    margin-bottom: 5px;
-    margin-top: 30px;
-    height: 100px;
-    background-color: black;
-    box-shadow: 0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-}
-
-.startupCard:hover{
-    cursor: pointer;
-    transition: .2s;
-    box-shadow:6px 5px 20px 7px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-}
-
-.event-card{
-    margin-bottom: 5px;
-    margin-top: 30px;
-    height: 300px;
-    background-color: black;
-    box-shadow: 0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-}
-
-.event-card:hover{
-    cursor: pointer;
-    transition: .2s;
-    box-shadow:6px 5px 20px 7px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-
-
-}
-
-.startupCard-img{
-    height: 100px;
-    width: 100%;
-}
-.event-card-img{
-    width: 100%;
-}
-.treatNames{
-    padding: 17px;
-    font-size: 16px;
-    color: #808080;
-}
-
-.desti{
-    padding-top: 60px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    height: 300px;
-
-}
-
-.malaysia{
-    background-image: url(http://www.medicaltourism.company/assets/img/malaysia.jpeg);
-}
-
-.thailand{
-    background-image: url(http://www.medicaltourism.company/assets/img/thailand.jpg);
-}
-
-.india{
-    background-image: url(http://www.medicaltourism.company/assets/img/india.jpg);
-}
-
-.brazil{
-    background-image: url(http://www.medicaltourism.company/assets/img/brazil.jpg);
-}
-
-.queryButton{
-    padding: 5px 25px;
-    border-color: white;
-    background-color: #54595f;
-    color: #ffffff;
-}
-
-.freqImg{
-    padding: 30px;
-}
-
-.mainHeading{
-    padding-top: 10%;
-    color: black;
-    font-size: 58px;
-}
-
-.mainSubHeading{
-    font-size: 24px;
-}
-
-.searchButton{
-    padding: 0rem .75rem;
-    letter-spacing: 1px;
-    font-size: 15px;
-    color: white;
-    background-color: #3bb0e2;
-    height: 27px;
-}
-
-.docProfile{
-    text-transform: capitalize;
-    font-size: 17px;
-    margin-bottom: 0rem;
-    font-weight: 700;
-    color: #67a2ba;
-}
-
-.event-card-heading{
-    font-size: 16px;
-    margin-top: 1rem;
-}
-.event-card-date{
-    color: #67a2ba;
-    font-size: 11px;
-}
-.event-card-location{
-    font-size: 10px;
-    margin-top: 1rem;
-}
-
-.docSpecProfile{
-    font-size: 12px;
-    color: #818181;
-    font-weight: 600;
-}
-
-.docDesgProfile{
-    font-size: 12px;
-    color: #818181;
-}
-
-.docHospProfile{
-    text-transform: uppercase;
-    font-size: 12px;
-    color: #2466c7;
-}
-
-.docSdProfile{
-    font-size: 12px;
-    color: #050505;
-}
-
-.fixed-button{
-    margin-right: -44px;
-    position: fixed;
-    top: 50%;
-    right: 0%;
-    z-index: 999;
-    transform: rotate(-90deg);
-}
-.padding50{
-    padding-top: 20px;
-    padding-right: 50px;
-    padding-left: 50px;
-}
-
-.apply-button{
-    border-radius: 40px;
-    width: 100px;
-    height: 50px;
-}
-
-.teamCard-img{
-    width: 100%;
-    height: 250px;
-}
-.teamCard{
-    margin-bottom: 5px;
-    margin-top: 30px;
-    height: 325px;
-    background-color: black;
-    box-shadow: 0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-}
-
-.teamCard:hover{
-    cursor: pointer;
-    transition: .2s;
-    box-shadow:6px 5px 20px 7px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-}
-
-.team-title{
-    font-size: 21px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-bottom: 0px;
-}
-
-.team-role{
-    font-size: 15px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-@media screen and (max-width: 768px) {
-    .col-xs-1 {
-        width: 8.33%;
-    }
-    .col-xs-2 {
-        width: 16.66%;
-    }
-    .col-xs-3 {
-        width: 25%;
-    }
-    .col-xs-4 {
-        width: 33%;
-    }
-    .col-xs-5 {
-        width: 41.67%;
-    }
-    .col-xs-6 {
-        width: 50%;
-    }   
-    .col-xs-7 {
-        width: 58.88%;
-    }
-    .col-xs-8 {
-        width: 66.66%;
-    }
-    .col-xs-9 {
-        width: 75%;
-    }
-    .col-xs-10 {
-        width: 83.33%;
-    }
-    .col-xs-11 {
-        width: 91.6%;
-    }
-    .col-xs-12 {
-        width: 100%;
-    }
-    .btn-lg {
-        width: 100%;
-        margin-bottom: 35px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .counter-value{
-        color: gray;
-        font-size: 25px;
-        padding-top: 10px;
-    }
-
-    .counter-value-text{
-        font-size: 12px;
-        padding-bottom: 10px;
-    }
-
-    h1{
-        font-size: 30px;
-        font-weight: 900;
-    }
-
-    .sixStep{
-        font-size: 25px;    
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-    .banner {
-        background-image: url('http://www.medicaltourism.company/assets/img/banner.jpg');
-        height: 200px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .main-heading{
-        margin-top: 1em;
-    }
-    .freqImg{
-        width: 45%;
-        padding: 30px;
-    }
-
-    h3{
-        font-size: 22px;
-    }
-
-    .treatNames{
-        font-size: 15px;
-        line-height: 30px;
-    }
-
-    .hover{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: auto;
-        box-shadow:5px 8px 20px 4px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-    }
-    .hover2{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: auto;
-        box-shadow:5px 8px 20px 4px rgba(135, 112, 112, 0.2), -2px -1px 20px 0 rgba(166, 164, 164, 0.19);
-    }
-    .searchBar{
-        padding-top: 0%;
-    }
-
-    .mainHeading{
-        padding-top: 19%;
-        color: black;
-        font-size: 28px;
-    }
-    .mainSubHeading{
-        font-size: 17px;
-    }
-    .desti{
-        padding-top: 17px;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        height: 115px;
-    }
-
-    .fixed-button{
-        margin-right: 0%;
-        top: 95%;
-        right: 0%;
-        transform: none;
-        width: 100%;
-        bottom: 0%;
-        position: fixed;
-        z-index: 999;
-    }
-    .padding50{
-        padding-right: 15px;
-        padding-left: 30px;
-    }
-    .teamCard-img{
-        width: 100%;
-        height: 155px;
-    }
-    .teamCard{
-        margin-bottom: 5px;
-        margin-top: 30px;
-        height: 225px;
-        background-color: black;
-        box-shadow: 0px 0px 5px 3px rgba(120, 120, 120, 0.29);
-    }
-    .team-title{
-        font-size: 17px;
-        padding: 8px;
-    }
 }

@@ -57,6 +57,7 @@
     <style>
         .ag-theme-alpine .ag-root-wrapper {
             border-color: #000000;
+            border-width: 0px;
             border-radius: 6px;
         }
 
@@ -85,7 +86,7 @@
             min-width: 0px;
             overflow: hidden;
             flex: 1 1 auto;
-            background-color: black;
+            background-color: #1e1e30;
         }
     </style>
 </head>
