@@ -41,8 +41,9 @@ body {
 }
 
 .card-container {
-    color: #0093fa;
-    height: 157px;
+    padding: 20px;
+    color: #007bff;
+    height: auto;
     background-color: #0093fa26;
     margin-top: 30px;
     border-radius: 7px;
@@ -53,8 +54,8 @@ div {
 }
 
 .card-title {
-    color: #0093fa;
-    padding: 10px;
+    color: #007bff;
+    /* padding: 10px; */
 }
 
 .ag-pivot-off .ag-header-cell-label {

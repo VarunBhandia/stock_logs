@@ -2,15 +2,23 @@
 ?>
 <div class="row">
 
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card-container">
-            <h2 class="card-title">List of Shares</h2>
+            <h4 class="card-title"> <b>List of Stocks</b> </h4>
             <div class="card-desc">
-                Balaji
+                <ol>
+                    <?php
+                    foreach ($unique_stocks as $unique_stock) {
+                        ?>
+                        <li><?php echo $unique_stock->name ?></li>
+                        <?php
+                    }
+                    ?>
+                </ol>
             </div>
         </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-8">
 
         <div class="table-container">
             <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
@@ -30,14 +38,14 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true,
-            width: 70,
+            width: 100,
         },
         {
             headerName: "Name",
             field: "name",
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 320,
+            width: 350,
             // checkboxSelection: true
         },
         {
@@ -45,7 +53,7 @@
             field: "price",
             sortable: true,
             filter: true,
-            width: 110,
+            width: 120,
             // checkboxSelection: true
         },
         {
@@ -54,14 +62,14 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true
-            width: 90,
+            width: 100,
         },
         {
             headerName: "B/S",
             field: "category",
             sortable: true,
             filter: true,
-            width: 80,
+            width: 100,
             // checkboxSelection: true
         },
         {
@@ -69,7 +77,7 @@
             field: "trade_date",
             sortable: true,
             filter: true,
-            width: 130,
+            width: 160,
             // checkboxSelection: true
         }
     ];
