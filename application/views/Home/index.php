@@ -2,9 +2,13 @@
 ?>
 <div class="row">
 
-    <div class="col-md-4"></div>
-    <div class="col-md-8">
-        <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
+    <div class="col-md-5"></div>
+    <div class="col-md-7">
+        
+        <div class="table-container">
+            <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
+
+        </div>
     </div>
 </div>
 
@@ -19,14 +23,14 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true,
-            width: 80,
+            width: 70,
         },
         {
             headerName: "Name",
             field: "name",
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 250,
+            width: 320,
             // checkboxSelection: true
         },
         {
@@ -34,7 +38,7 @@
             field: "price",
             sortable: true,
             filter: true,
-            width: 150,
+            width: 110,
             // checkboxSelection: true
         },
         {
@@ -43,7 +47,7 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true
-            width: 80,
+            width: 90,
         },
         {
             headerName: "B/S",
@@ -58,7 +62,7 @@
             field: "trade_date",
             sortable: true,
             filter: true,
-            width: 200,
+            width: 130,
             // checkboxSelection: true
         }
     ];
@@ -76,18 +80,18 @@
     gridOptions.getRowStyle = function(params) {
         if (params.data.id % 2 === 0) {
             return {
-                'font-size': '12px',
+                'font-size': '13px',
                 'background-color': '#393939',
                 'color': 'white',
             }
         }
         return {
-            'font-size': '12px',
-            'background-color': '#717171',
+            'font-size': '13px',
+            'background-color': 'rgb(74, 73, 73)',
             'color': 'white',
         }
     }
-    gridOptions.rowHeight = 40;
+    gridOptions.rowHeight = 35;
     // lookup the container we want the Grid to use
     var eGridDiv = document.querySelector('#myGrid');
 

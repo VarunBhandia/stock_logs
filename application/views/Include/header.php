@@ -11,7 +11,8 @@
     <link rel="icon" href="<?php echo base_url() ?>assets/img/logo/logo.png" type="image/png">
 
     <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -27,12 +28,12 @@
 
     <!-- DataTable -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css">
-    <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js" ></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
-    
+
     <script>
         var styles = [
             'color: red',
@@ -53,6 +54,40 @@
         console.log('%c =>LinkedIn    : https://www.linkedin.com/in/varunbhandia', styles1);
         console.log('%c =>GitHub       : https://github.com/varunbhandia', styles1);
     </script>
+    <style>
+        .ag-theme-alpine .ag-root-wrapper {
+            border-color: #000000;
+            border-radius: 6px;
+        }
+
+        .ag-theme-alpine .ag-row {
+            border-width: 0px;
+        }
+
+        .ag-theme-alpine .ag-root-wrapper {
+            background-color: transparent;
+        }
+
+        .ag-theme-alpine .ag-header-icon {
+            color: white;
+            opacity: 1 !important;
+        }
+
+        .ag-header-viewport,
+        .ag-floating-top-viewport,
+        .ag-body-viewport,
+        .ag-center-cols-viewport,
+        .ag-floating-bottom-viewport,
+        .ag-body-horizontal-scroll-viewport,
+        .ag-virtual-list-viewport {
+            position: relative;
+            height: 100%;
+            min-width: 0px;
+            overflow: hidden;
+            flex: 1 1 auto;
+            background-color: black;
+        }
+    </style>
 </head>
 
 <body>

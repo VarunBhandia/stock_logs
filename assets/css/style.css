@@ -21,41 +21,36 @@ body{
     background-color: #161619 !important;
 }
 
-.sidenav {
-    height: 100%;
-    width: 55px;
-    position: fixed;
-    z-index: 1;
-    background-color: black;
-    overflow-x: hidden;
-  }
-  
-  .sidenav a {
-    padding: 6px 7px 6px 20px;
-    font-size: 20px;
-    text-decoration: none;
-    color: #818181;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-
 .searchBar{
     padding-top: 5%;
 }
-
+.table-container{
+    margin-top: 30px;
+    /* background-color: #414141; */
+}
 .banner {
     width: 100%;
 }
+.ag-pivot-off .ag-header-cell-label {
+    color: white;
+    background-color: black;
+}
+.ag-cell-label-container {
+    /* Necessary to allow for text to grow vertically */
+    background-color: black;
+}
 
+.ag-header-row{
+background-color: black !important;
+}
+.ag-theme-alpine .ag-row{
+    
+}
+
+.ag-theme-alpine .ag-root-wrapper{
+    border-color: #000000;
+    border-radius: 13px;
+}
 .banner-container{
     background-color: #eff2f7;
 }

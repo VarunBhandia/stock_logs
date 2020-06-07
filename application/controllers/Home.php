@@ -50,9 +50,10 @@ class Home extends CI_Controller
                 $filtered_trade[$j]->qty = $filtered_trade[$j]->qty + $trades[$i]->qty;
             }
             else{
-                $filtered_trade[$j]->id = $j;
+               
                 array_push($filtered_trade,$trades[$i]);
                 $j++;
+                $filtered_trade[$j]->id = $j+1;
             }
             $i++;
         }
