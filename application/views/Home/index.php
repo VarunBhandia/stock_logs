@@ -1,10 +1,22 @@
 <?php $this->load->view('Include/header');
 ?>
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
         <div class="report-card-container">
-            <?php echo $total_hold ?>
-            <?php echo $total_profit ?>
+            <h3 class="report-card-title"> <b>Total Investment</b> </h3>
+            <p class="report-card-desc"><?php echo $total_investment ?></p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="report-card-container">
+            <h3 class="report-card-title"> <b>Total Profit</b> </h3>
+            <p class="report-card-desc"><?php echo $total_profit ?></p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="report-card-container">
+            <h3 class="report-card-title"> <b>Total Holding</b> </h3>
+            <p class="report-card-desc"><?php echo $total_hold ?></p>
         </div>
     </div>
 </div>
@@ -151,10 +163,9 @@
     new agGrid.Grid(eGridDiv, gridOptions);
 
     agGrid.simpleHttpRequest({
-        url: 'http://localhost/stocks_logs/index.php/Home/filteredTradeInfo'
+        url: '<?php echo base_url(); ?>index.php/Home/filteredTradeInfo'
     }).then(function(data) {
         gridOptions.api.setRowData(data);
-        // gridOptions.columnApi.autoSizeColumns(data, skipHeader);
 
     });
 </script>

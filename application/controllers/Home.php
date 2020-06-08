@@ -93,7 +93,7 @@ class Home extends CI_Controller
         }
         $data['stocks_map'] = $stocks_map;
         $data['total_profit'] = $total_profit;
-        $data['total_inverstment'] = 132000;
+        $data['total_investment'] = 132000;
         $data['total_hold'] = $total_hold;
 
         $this->load->view('Home/index', $data);
