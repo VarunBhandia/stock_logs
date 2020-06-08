@@ -57,7 +57,7 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     color: #007bff;
-    height: 350px;
+    height: 390px;
     background-color: #fab80026;
     margin-top: 20px;
     border-radius: 7px;
@@ -80,6 +80,17 @@ div {
 .stock-card-desc {
     color: #fbaa30;
     font-size: 13px;
+}
+
+.report-card-container {
+    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #8dff00;
+    height: 150px;
+    background-color: #00fa0726;
+    margin-top: 20px;
+    border-radius: 7px;
 }
 
 hr {
