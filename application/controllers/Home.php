@@ -65,13 +65,16 @@ class Home extends CI_Controller
             } else {
                 $current_hold_qty = $current_hold_qty - $temp_arr[count($temp_arr) - 1]->qty;
                 $hold_price = $temp_arr[count($temp_arr) - 1]->price;
-                for ($k = count($temp_arr) - 2; $k >= 0; $k--) {
-                    if ($current_hold_qty == 0) {
-                        break;
-                    } else {
+                $k = count($temp_arr) - 2;
+                while($k >= 0 && $current_hold_qty > 0){
+                    if($current_hold_qty - $temp_arr[$k]->qty >=0){
                         $hold_price = (($temp_arr[$k]->price * $temp_arr[$k]->qty) + ($current_hold_qty * $hold_price)) / ($temp_arr[$k]->qty + $current_hold_qty);
                         $current_hold_qty = $current_hold_qty - $temp_arr[$k]->qty;
                     }
+                    else{
+                        $current_hold_qty = 0 ;
+                    }
+                    $k--;
                 }
                 $profit = $total_sell_price - $total_buy_price + ($current_buy_qty*$hold_price);
             }
@@ -93,12 +96,11 @@ class Home extends CI_Controller
         }
         $data['stocks_map'] = $stocks_map;
         $data['total_profit'] = $total_profit;
-        $data['total_investment'] = 132000;
+        $data['total_investment'] = 132000+15000;
         $data['total_hold'] = $total_hold;
 
         $this->load->view('Home/index', $data);
     }
-
 
     public function getTradeData()
     {

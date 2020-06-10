@@ -70,7 +70,7 @@
     <div class="col-md-7">
 
         <div class="table-container">
-            <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;"></div>
+            <div id="myGrid" class="ag-theme-alpine" style="height: 550vh;"></div>
 
         </div>
     </div>
@@ -87,14 +87,14 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true,
-            width: 100,
+            width: 80,
         },
         {
             headerName: "Name",
             field: "name",
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 350,
+            width: 260,
             // checkboxSelection: true
         },
         {
@@ -102,7 +102,7 @@
             field: "price",
             sortable: true,
             filter: true,
-            width: 120,
+            width: 100,
             // checkboxSelection: true
         },
         {
@@ -111,14 +111,14 @@
             sortable: true,
             filter: true,
             // checkboxSelection: true
-            width: 100,
+            width: 80,
         },
         {
             headerName: "B/S",
             field: "category",
             sortable: true,
             filter: true,
-            width: 100,
+            width: 80,
             // checkboxSelection: true
         },
         {
@@ -126,7 +126,7 @@
             field: "trade_date",
             sortable: true,
             filter: true,
-            width: 160,
+            width: 150,
             // checkboxSelection: true
         }
     ];

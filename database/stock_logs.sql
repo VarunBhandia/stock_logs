@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2020 at 12:19 AM
+-- Generation Time: Jun 08, 2020 at 10:10 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.2
 
@@ -188,7 +188,41 @@ INSERT INTO `trade_info` (`id`, `name`, `price`, `qty`, `category`, `trade_date`
 (148, 'INOX LEISURE LTD.', '283', '1', 'B', '05/06/2020'),
 (149, 'INOX LEISURE LTD.', '283', '1', 'B', '05/06/2020'),
 (150, 'HDFC LIFE INSURANCE COMPANY LI', '517', '20', 'S', '05/06/2020'),
-(151, 'Indian Railway Catering and To', '1480', '5', 'S', '05/06/2020');
+(151, 'Indian Railway Catering and To', '1480', '5', 'S', '05/06/2020'),
+(152, 'BATA INDIA LTD.', '1450', '4', 'S', '08/06/2020'),
+(153, 'VOLTAS LTD.', '574.85', '20', 'B', '08/06/2020'),
+(154, 'VOLTAS LTD.', '585.2', '20', 'B', '08/06/2020'),
+(155, 'EMAMI LTD.', '205', '1', 'B', '08/06/2020'),
+(156, 'EMAMI LTD.', '205', '4', 'B', '08/06/2020'),
+(157, 'EMAMI LTD.', '205', '1', 'B', '08/06/2020'),
+(158, 'EMAMI LTD.', '205', '1', 'B', '08/06/2020'),
+(159, 'EMAMI LTD.', '205', '1', 'B', '08/06/2020'),
+(160, 'EMAMI LTD.', '205', '10', 'B', '08/06/2020'),
+(161, 'EMAMI LTD.', '205', '10', 'B', '08/06/2020'),
+(162, 'EMAMI LTD.', '205', '4', 'B', '08/06/2020'),
+(163, 'EMAMI LTD.', '205', '10', 'B', '08/06/2020'),
+(164, 'EMAMI LTD.', '205', '8', 'B', '08/06/2020'),
+(165, 'EMAMI LTD.', '203', '4', 'B', '08/06/2020'),
+(166, 'EMAMI LTD.', '203', '1', 'B', '08/06/2020'),
+(167, 'EMAMI LTD.', '203', '5', 'B', '08/06/2020'),
+(168, 'EMAMI LTD.', '203', '10', 'B', '08/06/2020'),
+(169, 'EMAMI LTD.', '203', '1', 'B', '08/06/2020'),
+(170, 'EMAMI LTD.', '203', '7', 'B', '08/06/2020'),
+(171, 'EMAMI LTD.', '203', '1', 'B', '08/06/2020'),
+(172, 'EMAMI LTD.', '203', '21', 'B', '08/06/2020'),
+(173, 'INDUSIND BANK LTD.', '460', '20', 'S', '08/06/2020'),
+(174, 'BALAJI TELEFILMS LTD.', '74.2', '19', 'S', '08/06/2020'),
+(175, 'BALAJI TELEFILMS LTD.', '74.2', '150', 'S', '08/06/2020'),
+(176, 'PVR LTD.', '1215', '10', 'S', '08/06/2020'),
+(177, 'INOX LEISURE LTD.', '305', '30', 'S', '08/06/2020'),
+(178, 'KAVERI SEED COMPANY LTD.', '511', '20', 'S', '08/06/2020'),
+(179, 'KAVERI SEED COMPANY LTD.', '509.4', '10', 'B', '08/06/2020'),
+(180, 'KAVERI SEED COMPANY LTD.', '508', '10', 'B', '08/06/2020'),
+(181, 'Indian Railway Catering and To', '1560.35', '2', 'B', '08/06/2020'),
+(182, 'Indian Railway Catering and To', '1560.4', '6', 'B', '08/06/2020'),
+(183, 'Indian Railway Catering and To', '1560.75', '2', 'B', '08/06/2020'),
+(184, 'Indian Railway Catering and To', '1548', '10', 'B', '08/06/2020'),
+(185, 'Indian Railway Catering and To', '1555', '10', 'B', '08/06/2020');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +242,7 @@ ALTER TABLE `trade_info`
 -- AUTO_INCREMENT for table `trade_info`
 --
 ALTER TABLE `trade_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
