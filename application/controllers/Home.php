@@ -12,7 +12,6 @@ class Home extends CI_Controller
         $this->load->model('Model');
         $this->model = 'Model';
         date_default_timezone_set('Asia/Kolkata');
-        
     }
 
     public function index()
@@ -29,7 +28,7 @@ class Home extends CI_Controller
         $no_of_unique_stocks = count($unique_stocks);
 
         $total_profit = 0;
-        $total_hold =0;
+        $total_hold = 0;
 
         $stocks_map = array();
         for ($j = 0; $j < $no_of_unique_stocks; $j++) {
@@ -58,25 +57,27 @@ class Home extends CI_Controller
             }
             $current_buy_qty = $total_buy_qty - $total_sell_qty;
             $current_hold_qty = $current_buy_qty;
-            $profit =0;
+            $profit = 0;
             if ($total_buy_qty == $total_sell_qty) {
                 $hold_price = 0;
-                $profit =$total_sell_price - $total_buy_price;
+                $profit = $total_sell_price - $total_buy_price;
             } else {
                 $current_hold_qty = $current_hold_qty - $temp_arr[count($temp_arr) - 1]->qty;
                 $hold_price = $temp_arr[count($temp_arr) - 1]->price;
                 $k = count($temp_arr) - 2;
-                while($k >= 0 && $current_hold_qty > 0){
-                    if($current_hold_qty - $temp_arr[$k]->qty >=0){
-                        $hold_price = (($temp_arr[$k]->price * $temp_arr[$k]->qty) + ($current_hold_qty * $hold_price)) / ($temp_arr[$k]->qty + $current_hold_qty);
+               
+                while ($k >= 0 && $current_hold_qty >= 0) {
+
+                    if ($current_hold_qty - $temp_arr[$k]->qty >= 0) {
+                        $hold_price = (($temp_arr[$k]->price * $temp_arr[$k]->qty) + (($current_buy_qty -$current_hold_qty )* $hold_price)) / ($temp_arr[$k]->qty + $current_buy_qty -$current_hold_qty);
                         $current_hold_qty = $current_hold_qty - $temp_arr[$k]->qty;
+                    } else {
+                        $current_hold_qty = 0;
                     }
-                    else{
-                        $current_hold_qty = 0 ;
-                    }
+
                     $k--;
                 }
-                $profit = $total_sell_price - $total_buy_price + ($current_buy_qty*$hold_price);
+                $profit = $total_sell_price - $total_buy_price + ($current_buy_qty * $hold_price);
             }
 
             $per_stock_info["name"] = $unique_stocks[$j]->name;
@@ -85,18 +86,18 @@ class Home extends CI_Controller
             $per_stock_info["total_buy_price"] = $total_buy_price;
             $per_stock_info["total_sell_price"] = $total_sell_price;
             $per_stock_info["current_buy_qty"] = $current_buy_qty;
-            $per_stock_info["hold_price"] = round($hold_price,2);
-            $per_stock_info["profit"] = round($profit,2);
-            $per_stock_info["curr_holding"] = round($hold_price,2)*$current_buy_qty;
+            $per_stock_info["hold_price"] = round($hold_price, 2);
+            $per_stock_info["profit"] = round($profit, 2);
+            $per_stock_info["curr_holding"] = round($hold_price, 2) * $current_buy_qty;
 
-            $total_profit = $total_profit + round($profit,2);
-            $total_hold = $total_hold + (round($hold_price,2)*$current_buy_qty);
+            $total_profit = $total_profit + round($profit, 2);
+            $total_hold = $total_hold + (round($hold_price, 2) * $current_buy_qty);
 
-            array_push($stocks_map,$per_stock_info);
+            array_push($stocks_map, $per_stock_info);
         }
         $data['stocks_map'] = $stocks_map;
         $data['total_profit'] = $total_profit;
-        $data['total_investment'] = 132000+15000;
+        $data['total_investment'] = 132000 + 15000;
         $data['total_hold'] = $total_hold;
 
         $this->load->view('Home/index', $data);
@@ -218,10 +219,10 @@ class Home extends CI_Controller
             }
             $current_buy_qty = $total_buy_qty - $total_sell_qty;
             $current_hold_qty = $current_buy_qty;
-            $profit =0;
+            $profit = 0;
             if ($total_buy_qty == $total_sell_qty) {
                 $hold_price = 0;
-                $profit =$total_sell_price - $total_buy_price;
+                $profit = $total_sell_price - $total_buy_price;
             } else {
                 $current_hold_qty = $current_hold_qty - $temp_arr[count($temp_arr) - 1]->qty;
                 $hold_price = $temp_arr[count($temp_arr) - 1]->price;
@@ -233,7 +234,7 @@ class Home extends CI_Controller
                         $current_hold_qty = $current_hold_qty - $temp_arr[$k]->qty;
                     }
                 }
-                $profit = $total_sell_price - $total_buy_price + ($current_buy_qty*$hold_price);
+                $profit = $total_sell_price - $total_buy_price + ($current_buy_qty * $hold_price);
             }
 
             $per_stock_info["name"] = $unique_stocks[$j]->name;
@@ -244,7 +245,7 @@ class Home extends CI_Controller
             $per_stock_info["current_buy_qty"] = $current_buy_qty;
             $per_stock_info["hold_price"] = $hold_price;
             $per_stock_info["profit"] = $profit;
-            array_push($stocks_map,$per_stock_info);
+            array_push($stocks_map, $per_stock_info);
         }
         return $stocks_map;
     }
