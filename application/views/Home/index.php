@@ -61,7 +61,6 @@
 
             <?php
             }
-            // echo $total_profit;
             ?>
         </div>
 
@@ -70,7 +69,59 @@
     <div class="col-md-7">
 
         <div class="table-container">
-            <div id="myGrid" class="ag-theme-alpine" style="height: 550vh;"></div>
+            <div id="myGrid" class="ag-theme-alpine" style="height: 1000vh;">
+                <!-- <div style="display: flex;">
+                    <div>
+                        <div class="row">
+                            <label>suppressQuotes = </label>
+                            <select id="suppressQuotes">
+                                <option value="none">(default)</option>
+                                <option value="true">true</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>columnSeparator = </label>
+                            <select id="columnSeparator">
+                                <option value="none">(default)</option>
+                                <option value="tab">tab</option>
+                                <option value="|">bar (|)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin-left: 10px;">
+                        <div class="row">
+                            <label>customHeader = </label>
+                            <select id="customHeader">
+                                <option>none</option>
+                                <option value="array">ExcelCell[][] (recommended format)</option>
+                                <option value="string">string (legacy format)</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>customFooter = </label>
+                            <select id="customFooter">
+                                <option>none</option>
+                                <option value="array">ExcelCell[][] (recommended format)</option>
+                                <option value="string">string (legacy format)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 10px 0;">
+                    <button onclick="onBtnUpdate()">Show api.getDataAsCsv() text</button>
+                    <button onclick="onBtnExport()">
+                        Download file (api.exportDataAsCsv())
+                    </button>
+                </div>
+
+                <div style="flex: 1; position: relative;">
+                    <div id="myGrid" class="ag-theme-alpine"></div>
+                    <textarea id="csvResult">
+Press the api.getDataAsCsv() button to view exported CSV here</textarea>
+                </div> -->
+            </div>
 
         </div>
     </div>
@@ -80,13 +131,11 @@
     $(document).ready(function() {
         $('#trade-table').DataTable();
     });
-    // specify the columns
     var columnDefs = [{
             headerName: "ID",
             field: "id",
             sortable: true,
             filter: true,
-            // checkboxSelection: true,
             width: 80,
         },
         {
@@ -95,7 +144,6 @@
             sortable: true,
             filter: 'agTextColumnFilter',
             width: 260,
-            // checkboxSelection: true
         },
         {
             headerName: "Price",
@@ -103,14 +151,12 @@
             sortable: true,
             filter: true,
             width: 100,
-            // checkboxSelection: true
         },
         {
             headerName: "Qty",
             field: "qty",
             sortable: true,
             filter: true,
-            // checkboxSelection: true
             width: 80,
         },
         {
@@ -119,7 +165,6 @@
             sortable: true,
             filter: true,
             width: 80,
-            // checkboxSelection: true
         },
         {
             headerName: "Trade Date",
@@ -127,11 +172,9 @@
             sortable: true,
             filter: true,
             width: 150,
-            // checkboxSelection: true
         }
     ];
 
-    // let the grid know which columns to use
     var gridOptions = {
         defaultColDef: {
             resizable: true,
@@ -156,10 +199,8 @@
         }
     }
     gridOptions.rowHeight = 35;
-    // lookup the container we want the Grid to use
     var eGridDiv = document.querySelector('#myGrid');
 
-    // create the grid passing in the div to use together with the columns & data we want to use
     new agGrid.Grid(eGridDiv, gridOptions);
 
     agGrid.simpleHttpRequest({
@@ -168,4 +209,81 @@
         gridOptions.api.setRowData(data);
 
     });
+
+    function getBooleanValue(checkboxSelector) {
+        return document.querySelector(checkboxSelector).checked;
+    }
+
+    function getValue(inputSelector) {
+        var text = document.querySelector(inputSelector).value;
+        switch (text) {
+            case 'string':
+                return (
+                    'Here is a comma, and a some "quotes". You can see them using the\n' +
+                    'api.getDataAsCsv() button but they will not be visible when the downloaded\n' +
+                    'CSV file is opened in Excel because string content passed to\n' +
+                    'customHeader and customFooter is not escaped.'
+                );
+            case 'array':
+                return [
+                    [],
+                    [{
+                        data: {
+                            value: 'Here is a comma, and a some "quotes".',
+                            type: 'String',
+                        },
+                    }, ],
+                    [{
+                        data: {
+                            value: 'They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)',
+                            type: 'String',
+                        },
+                    }, ],
+                    [{
+                            data: {
+                                value: 'this cell:',
+                                type: 'String'
+                            },
+                            mergeAcross: 1
+                        },
+                        {
+                            data: {
+                                value: 'is empty because the first cell has mergeAcross=1',
+                                type: 'String',
+                            },
+                        },
+                    ],
+                    [],
+                ];
+            case 'none':
+                return;
+            case 'tab':
+                return '\t';
+            case 'true':
+                return true;
+            case 'none':
+                return;
+            default:
+                return text;
+        }
+    }
+
+    function getParams() {
+        return {
+            suppressQuotes: getValue('#suppressQuotes'),
+            columnSeparator: getValue('#columnSeparator'),
+            customHeader: getValue('#customHeader'),
+            customFooter: getValue('#customFooter'),
+        };
+    }
+
+    function onBtnExport() {
+        var params = getParams();
+        if (params.suppressQuotes || params.columnSeparator) {
+            alert(
+                'NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel.'
+            );
+        }
+        gridOptions.api.exportDataAsCsv(params);
+    }
 </script>

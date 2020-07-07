@@ -65,7 +65,6 @@ class Home extends CI_Controller
                 $current_hold_qty = $current_hold_qty - $temp_arr[count($temp_arr) - 1]->qty;
                 $hold_price = $temp_arr[count($temp_arr) - 1]->price;
                 $k = count($temp_arr) - 2;
-               
                 while ($k >= 0 && $current_hold_qty >= 0) {
 
                     if ($current_hold_qty - $temp_arr[$k]->qty >= 0) {
@@ -74,7 +73,6 @@ class Home extends CI_Controller
                     } else {
                         $current_hold_qty = 0;
                     }
-
                     $k--;
                 }
                 $profit = $total_sell_price - $total_buy_price + ($current_buy_qty * $hold_price);
@@ -97,7 +95,7 @@ class Home extends CI_Controller
         }
         $data['stocks_map'] = $stocks_map;
         $data['total_profit'] = $total_profit;
-        $data['total_investment'] = 132000 + 15000;
+        $data['total_investment'] = 44000 + 40000 +8000 + 40000 +40000 + 15000 + 80000;
         $data['total_hold'] = $total_hold;
 
         $this->load->view('Home/index', $data);
@@ -176,7 +174,6 @@ class Home extends CI_Controller
         $data['controller'] = $this->controller;
         $fields = ['name'];
         $trades = $this->$model->select_distinct($fields, 'trade_info', array(), '');
-        // echo json_encode($trades);
         return $trades;
     }
 
@@ -190,7 +187,6 @@ class Home extends CI_Controller
         $no_of_unique_stocks = count($unique_stocks);
 
         $stocks_map = array();
-        // echo '<pre>';
 
         for ($j = 0; $j < $no_of_unique_stocks; $j++) {
             $temp_arr = [];
@@ -217,6 +213,7 @@ class Home extends CI_Controller
                     }
                 }
             }
+            
             $current_buy_qty = $total_buy_qty - $total_sell_qty;
             $current_hold_qty = $current_buy_qty;
             $profit = 0;
